@@ -41,19 +41,19 @@ const validatePassword = async(request,response) => {
 
 }
 app.get('/',(request,response)=>{
-    res.send("Hello") //respond
+    response.send("Hello") //respond
 })
 
 // responding to a call from a post 
 app.post('/login',validatePassword);
 
 // Creating a sign-up to add into the redis client
-// const signUp = (request,response) => {
-//     const readline = require('readline').createInterface({
-//         input: process.stdin,
-//         output: process.stdout,
-//     });
-//     readline.
-// };
+const signUp = async (request,response) => {
+    const clearTextPassword = request.body.password;
+    const hashedTextPassword = md5(clearTextPassword);
+    await redisClient.hSet ('passwords',request.body.userName,hashedTextPassword);
+    response.status(200);
+    response.send({result:"Saved"});
+}
 
-// app.post('/signup', signUp);
+app.post('/signup', signUp);
