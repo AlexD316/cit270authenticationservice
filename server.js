@@ -1,6 +1,6 @@
 const express = require('express'); //import the library
 const https = require('https');
-const port = 6379;
+const port = 53;
 const app = express(); //use the library
 const fs = require('fs');
 const md5 = require('md5');
@@ -11,11 +11,6 @@ const { fstat } = require('fs');
 const redisClient = createClient(
 {
   url: 'redis://AlexD@10.128.0.2:6379',
-  socket:{
-    port:6379,
-    host:"127.0.0.1",
-},
-
 }
 );
 
