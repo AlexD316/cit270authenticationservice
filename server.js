@@ -10,12 +10,14 @@ const { response } = require('express');
 const { fstat } = require('fs');
 const redisClient = createClient(
 {
+  url: 'redis://AlexD@10.128.0.2:6379',
   socket:{
       port:6379,
       host:"127.0.0.1",
   },
 }
 );
+
 redisClient.connect();
 
 app.use(bodyParser.json());

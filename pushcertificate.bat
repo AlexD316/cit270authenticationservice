@@ -1,0 +1,1 @@
+scp server.cert server.key AlexD@34.132.37.87:/tmp
