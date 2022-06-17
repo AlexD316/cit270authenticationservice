@@ -1,6 +1,6 @@
 const express = require('express'); //import the library
 const https = require('https');
-const port = 4043;
+const port = 6379;
 const app = express(); //use the library
 const fs = require('fs');
 const md5 = require('md5');
