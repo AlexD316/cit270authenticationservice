@@ -48,5 +48,5 @@ spec:
     app: alex-cit270
   type: LoadBalancer
   ports:
-  - port: 80
-    targetPort: 3000
+  - port: 443
+    targetPort: 443
