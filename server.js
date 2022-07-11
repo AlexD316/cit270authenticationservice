@@ -11,10 +11,10 @@ const { fstat } = require('fs');
 const redisClient = createClient(
 {
   url: 'redis://default:@34.71.122.116:6379',
-  socket:{
-    port:6379,
-    host:"127.0.0.1",
-},
+//  socket:{
+//    port:6379,
+///    host:"127.0.0.1",
+//},
 }
 );
 
