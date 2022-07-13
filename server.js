@@ -1,6 +1,6 @@
 const express = require('express'); //import the library
 const https = require('https');
-const port = 443;
+const port = 3000;
 const app = express(); //use the library
 const fs = require('fs');
 const md5 = require('md5');
@@ -18,17 +18,20 @@ const redisClient = createClient(
 }
 );
 
-redisClient.connect();
-
 app.use(bodyParser.json());
 
-https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert'),
-    passphrase: 'P@ssw0rd',
-  }, app).listen(port, async()=>{
-    console.log("Listening on Port: "+port) //listening
-});
+// https.createServer({
+//     key: fs.readFileSync('server.key'),
+//     cert: fs.readFileSync('server.cert'),
+//     passphrase: 'P@ssw0rd',
+//   }, app).listen(port, async()=>{
+//     console.log("Listening on Port: "+port) //listening
+// });
+
+app.listen(port, async()=>{
+    await redisClient.connect();
+    console.log("Listening on Port: "+port)
+})
 
 const validatePassword = async(request,response) => {
     //await redisClient.connect();
